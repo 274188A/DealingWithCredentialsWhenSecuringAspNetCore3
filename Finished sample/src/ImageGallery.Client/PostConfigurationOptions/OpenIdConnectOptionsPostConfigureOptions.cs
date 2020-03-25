@@ -31,8 +31,9 @@ namespace ImageGallery.Client.PostConfigurationOptions
             {
                 OnTicketReceived = async ticketReceivedContext =>
                 {
-                    var subject = ticketReceivedContext.Principal.Claims
-                        .FirstOrDefault(c => c.Type == "sub").Value;
+                     var subject = ticketReceivedContext.Principal.Claims
+                        .FirstOrDefault(c => c.Type == "sub")
+                        ?.Value;
 
                     var apiClient = _httpClientFactory.CreateClient("BasicAPIClient");
 
